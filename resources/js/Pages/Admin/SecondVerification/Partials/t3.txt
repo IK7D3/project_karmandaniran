@@ -1,0 +1,263 @@
+import React, { useState } from "react";
+import TextInput from "@/Components/TextInput";
+import { Link, useForm, usePage } from "@inertiajs/react";
+import ReactPaginate from "react-paginate";
+import InputLabel from "@/Components/InputLabel";
+
+const FormVerification1 = ({ data, req }) => {
+    // for (let i = 0; i < req.length; i++) {
+    //     console.log(req[i]);
+    //   }
+    const [showOnlyInitialRequests, setShowOnlyInitialRequests] =
+        useState(false);
+
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 3;
+    const filteredData = req.filter(
+        (item) => item.matching_record.second_request == 1
+    );
+    // console.log("fil", filteredData);
+    const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+
+    const handlePageClick = ({ selected }) => {
+        setCurrentPage(selected);
+    };
+
+    const handleCheckboxChange = () => {
+        setShowOnlyInitialRequests(!showOnlyInitialRequests);
+    };
+
+    const offset = currentPage * itemsPerPage;
+    const currentItems = filteredData.slice(offset, offset + itemsPerPage);
+
+    // const submit = (e) => {
+    //     e.preventDefault();
+
+    //     post(route("transfer_request.store"));
+    // };
+
+    // console.log(currentItems);
+
+    return (
+        <div class="relative overflow-hidden shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-right text-gray-500 ">
+                <thead class=" bg-amber-200">
+                    <tr>
+                    <th scope="col" class="px py-3">
+                           تعیین وضعیت
+                        </th>
+                    <th scope="col" class="px-6 py-3">
+                            سایر مشخصات
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            سایر مقاصد
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            مقصد اصلی
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            مبدا
+                        </th>
+                      
+                        <th scope="col" class="px py-3 ">
+                            کد پیگیری پرداخت
+                        </th>
+                        <th scope="col" class="px-6 py-3 ">
+                            شماره تماس
+                        </th>
+                        <th scope="col" class="px-6 py-3 ">
+                            کد ملی
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            نام خانوادگی
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            نام
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            شناسه
+                        </th>
+
+                        {/* <th scope="col" class="p-4">
+                            <div class="flex items-center">
+                                <TextInput
+                                    id="checkbox-all-search"
+                                    type="checkbox"
+                                    class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded
+                                     focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                                      dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 
+                                      dark:border-gray-600"
+                                />
+                                <label
+                                    for="checkbox-all-search"
+                                    class="sr-only"
+                                >
+                                    checkbox
+                                </label>
+                            </div>
+                        </th> */}
+                    </tr>
+                </thead>
+                <tbody className="font-medium">
+                    {currentItems.map((item) => (
+                        <>
+                            {/* {console.log("reqq: ", item)} */}
+
+                            <tr className="bg-teal-100 border-t-2 border-t-teal-700">
+                                {/* {console.log(item)}  */}
+                                {/* {console.log(mitem)} */}
+                                <td className="px-6">
+                                    <tr className="text-sm font-normal">
+                                            <td className="px-2"><span className="text-xs font-light">سایر مقاصد: </span>{item.matching_record.other_destinations}</td>
+                                            <td className="px-2 py-2"><span className="text-xs font-light">مقصد اصلی: </span>{item.matching_record.main_destination}</td>
+                                            <td className="px-2"><span className="text-xs font-light">مبدا: </span>{item.matching_record.origin}</td>
+                                            
+                                        </tr>     
+                               </td>
+                                <td className="px-6 py-5">
+                                    <Link
+                                        className="text-green-500 "
+                                        href={route(
+                                            "admin.code_second_step_second_verification",
+                                            {
+                                                item,
+                                                status: item.matching_record
+                                                    .second_request,
+                                            }
+                                        )}
+                                        method="post"
+                                    >
+                                        {item.matching_record.second_request ==
+                                        2 ? (
+                                            "تایید"
+                                        ) : (
+                                            <span className="text-red-600">
+                                                عدم تایید
+                                            </span>
+                                        )}
+                                    </Link>
+                                </td>
+                                {/* <td className="px-6">{mitem.second_payment_code}</td> */}
+                                <td className="px-6">
+                                    {item.matching_record.second_payment_code}
+                                </td>
+                                <td className="px-6">
+                                    {item.matching_record.phone_number}
+                                </td>
+                                <td className="px-6">
+                                    {item.matching_record.national_code}
+                                </td>
+                                <td className="px-6">
+                                    {item.matching_record.last_name}
+                                </td>
+                                <td className="px-6">
+                                    {item.matching_record.name}
+                                </td>
+                                <td className="px-6">
+                                    {item.matching_record.id}
+                                </td>
+                            </tr>
+
+                            {/* <td className="px-6 py-5 bg-blue-50">
+                                    <Link 
+                                        className="text-green-500 "
+                                        href={route("admin.code_second_step_second_verification", { item,  status: item.second_request})}
+                                        method="post"
+                                    >
+                                        {item.second_request === 2 ? "تایید" : <span className="text-red-600">عدم تایید</span>}
+                                    </Link>
+                                </td> */}
+                            {/* {console.log(typeof(item.related_data))} */}
+                            {item.related_data.map((ritem) => (
+                                <tr className=" border-b text-xs">
+                                    <td className="px-6">
+                                    <tr className=" ">
+                                            <td className="pl-10">{ritem.type_of_employment}</td>
+                                            <td className="px-6">{ritem.organizational_position}</td>
+                                            <td className="px-6">{ritem.work_experience}</td>
+                                            
+                                        </tr>
+                                    </td>
+
+                                    
+                                    <tr className="border-b ">
+                                    <td className="px-2 py-2"><span className="text-xs font-light">مقاصد دیگر: </span>{ritem.other_destinations}</td>
+                                    
+                                    <td className="px-2"><span className="text-xs font-light">مقصد اصلی: </span>
+                                        {ritem.main_destination}
+        
+                                    </td>
+                                            
+                                        </tr>
+                                        <td className="px-2"><span className="text-xs font-light">مبدا: </span>{ritem.origin}</td>
+                                    
+                                    <td className="px-6">
+                                        {ritem.phone_number}
+                                    </td>
+                                    <td className="px-6">
+                                        {ritem.national_code}
+                                    </td>
+                                    <td className="px-6">{ritem.last_name}</td>
+                                    <td className="px-6">{ritem.name}</td>
+                                    <td className="pr-10">{ritem.id}</td>
+
+                                    {/* <td className="px-6 bg-blue-50">{item.phone_number}</td>
+                                <td className="px-6 bg-blue-50">{item.national_code}</td>
+                                <td className="px-6 bg-blue-50">{item.last_name}</td>
+                                <td className="px-6 bg-blue-50">{item.name}</td> */}
+                                </tr>
+                            ))}
+                        </>
+                    ))}
+                </tbody>
+            </table>
+            <div
+                className="bg-cyan-950 py-2 px-5
+             flex flex-row  text-sm "
+            >
+                {/* ... */}
+
+                <ReactPaginate
+                    previousLabel={"قبلی"}
+                    previousClassName={
+                        "text-white  uppercase tracking-wider hover:text-amber-200   transition  ease-in-out duration-150"
+                    }
+                    nextLabel={"بعدی"}
+                    nextClassName={
+                        "text-white  uppercase tracking-wider hover:text-amber-200   transition  ease-in-out duration-150"
+                    }
+                    breakLabel={"..."}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    pageClassName="hidden"
+                    pageLinkClassName="hidden"
+                    // containerClassName={"pagination"}
+                    // activeClassName={"active"}
+                    className=" basis-1/2  flex flex-row justify-start gap-4 font-vazir text-right
+                    
+                    items-center px-4 py-2border
+               
+                 border-transparent 
+                rounded-md font-semibold  "
+                />
+                <div
+                    className="basis-1/2
+                items-center px-4 py-2border
+               
+                border-transparent 
+               rounded-md font-semibold  text-white uppercase 
+               tracking-wider  
+                focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                focus:ring-offset-2 transition 
+                ease-in-out duration-150"
+                >
+                    صفحه {currentPage + 1} از {pageCount}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default FormVerification1;

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+*{
+  direction: rtl;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("fonts/Vazir/Vazirmatn-VariableFont_wght.ttf") format('truetype');
+}
+
+@layer base{
+  body{
+    @apply font-vazir 
+  }
+}
+
+  
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+  
+/* Track */
+
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0ea5e9;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #075985;
+}

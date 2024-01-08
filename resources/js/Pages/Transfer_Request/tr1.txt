@@ -1,0 +1,173 @@
+import { useEffect, useState } from "react";
+import ApplicationLogo from "@/Components/ApplicationLogo";
+import Dropdown from "@/Components/Dropdown";
+import NavLink from "@/Components/NavLink";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
+import { Link } from "@inertiajs/react";
+
+export default function Authenticated({ user, header, children }) {
+    const [showingNavigationDropdown, setShowingNavigationDropdown] =
+        useState(false);
+    const [menuu, setMenuu] = useState(true);
+
+    
+    useEffect(() => {
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 1023) {
+                setMenuu(true);
+            } else {
+                setMenuu(false);
+            }
+        });
+    },[window.innerWidth]);
+
+    function showmenu() {
+        setMenuu((prevState) => !prevState);
+    }
+
+    return (
+        <div
+            className="font-vazir flex flex-row-reverse text-right h-screen overflow-hidden
+        bg-gradient-to-bl from-sky-200 to-sky-50"
+        >
+            <div className="w-full">
+                <div className="top-0 left-0 right-0 sticky">
+                    {/* <div className="text-center bg-yellow-300 mx-auto py-2">
+                        اخبار
+                    </div> */}
+                    {header && (
+                        <header className="bg-white shadow">
+                            <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                                <svg
+                                    class="w-6 h-6 text-sky-800 dark:text-white lg:hidden"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 17 14"
+                                    onClick={() => showmenu()}
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M1 1h15M1 7h15M1 13h15"
+                                    />
+                                </svg>
+
+                                <div className="hidden lg:block">{header}</div>
+                            </div>
+                        </header>
+                    )}
+                </div>
+                <main className="overflow-y-scroll h-[90%]">{children}</main>
+            </div>
+
+            {menuu && (
+                <div
+                    className="fixed lg:static bg-sky-500 shadow-xl border-l-2 border-cyan-200 py-5 
+            h-screen "
+                >
+                    <div className="flex flex-col mb-4">
+                        <div className="flex flex-col gap-2 text-center mb-2">
+                            <img src="../Logo2.png" className="flex my-1 mx-auto max-w-[7rem] fill-curret
+                             text-gray-800" />
+                            <span className="flex-1 text-white font-semibold text-lg">
+                            سامانه کارمندان ایران
+                            </span>
+                        </div>
+
+                        <div
+                            className="my-2 flex flex-col text-right text-sm bg-sky-100 leading-6 mx-2
+                            rounded-md px-4 py-2 shadow-lg gap-1.5" 
+                        >
+                            <span className="">نام: {user.name} </span>
+                            <span className="">نام خانوادگی: {user.last_name}</span>
+                            <span className="">کد ملی: {user.national_code}</span>
+                            <span className="">تلفن همراه: {user.phone_number}</span>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col text-right font-medium w-64">
+                        <Link
+                            className={
+                                route().current("dashboard")
+                                    ? " py-3 px-7 border-y-2 border-cyan-200 shadow-xl bg-sky-800 text-white"
+                                    : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
+                            }
+                            href={route("dashboard")}
+                        >
+                            صفحه اصلی
+                        </Link>
+
+                        <Link
+                            className={
+                                route().current("transfer_request.index")
+                                    ? "py-3 px-7 border-b-2 border-cyan-200  shadow-xl bg-sky-800 text-white"
+                                    : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
+                            }
+                            href={route("transfer_request.index")}
+                        >
+                            درخواست انتقالی
+                        </Link>
+                        <Link
+                            className={
+                                route().current("profile.edit")
+                                    ? "py-3 px-7 border-b-2 border-cyan-200  shadow-xl bg-sky-800 text-white"
+                                    : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
+                            }
+                            href={route("profile.edit")}
+                        >
+                            پروفایل
+                        </Link>
+                        {/* <Link
+                        className={
+                            route().current("profile.complaints")
+                                ? "py-3 px-7 border-b-2 border-cyan-200  shadow-xl bg-sky-800 text-white"
+                                : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
+                        }
+                        href={route("profile.complaints")}
+                    >
+                        ثبت شکایات
+                    </Link> */}
+                        <Link
+                            className="text-right hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
+                            href={route("logout")}
+                            method="post"
+                            as="button"
+                        >
+                            خروج
+                        </Link>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+{
+    /* document.querySelector(#menu).addEvenLessenr('click',function(){
+    document.querySelector(#navbar).classList.toggle('hidden')
+})
+*/
+}
+// const screenWidth = window.innerWidth;
+
+    // useEffect(() => {
+    //     function handleResize() {
+    //         const screenWidth = window.innerWidth;
+    //         if (screenWidth > 1024) {
+    //             setMenuu(true);
+    //         }else{
+    //             setMenuu(false);
+    //         }
+    //     }
+
+    //     // اضافه کردن رویداد برای بررسی تغییر اندازه صفحه
+    //     window.addEventListener("resize", handleResize);
+
+    //     // برداشتن رویداد هنگام عدم نیاز
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //     };
+    // }, [window.innerWidth]);
