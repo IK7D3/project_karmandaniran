@@ -53,17 +53,7 @@ export default function TransferRequest({
 
   
     const filteredData = req;
-    /* const filteredData = req.filter(
-        (item) => item.form_id == user.national_code
-    ); */
-    /*     const [second, setSecond] = useState(0);
 
-    useEffect(() => {
-        if (auth.user.initial_request === 3) {
-            setSecond(1);
-        }
-    }, [auth.user.initial_request]);
- */
     return (
         <AuthenticatedLayout
             user={auth.user}
