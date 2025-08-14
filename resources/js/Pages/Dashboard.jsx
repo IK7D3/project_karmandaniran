@@ -46,7 +46,7 @@ screen_size_2:max-w-[880px] screen_size_3:max-w-[940px] xl:max-w-[1020px] screen
                     </div>
                     </div>
                         
-                  
+                  <div></div>
             </div>
         </AuthenticatedLayout>
     );
