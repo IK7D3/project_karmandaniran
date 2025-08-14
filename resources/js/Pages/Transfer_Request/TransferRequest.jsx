@@ -24,7 +24,7 @@ export default function TransferRequest({
     const user = usePage().props.auth.user;
 
     // console.log("this er: ", user.national_code);
-    // console.log("thig: ",req);
+    console.log("thig: ",req);
     const formData = data.filter((item) => item.user_id != user.id);
     const reFormData = formData.filter(
         (item) =>
