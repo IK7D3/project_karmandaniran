@@ -143,26 +143,7 @@ export default function Authenticated({ user, header, children }) {
                      
                         </div>}
                         
-                        {/* <Link
-                            className={
-                                route().current("profile.edit")
-                                    ? "py-3 px-7 border-b-2 border-cyan-200  shadow-xl bg-sky-800 text-white"
-                                    : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
-                            }
-                            href={route("profile.edit")}
-                        >
-                            پروفایل
-                        </Link> */}
-                        {/* <Link
-                        className={
-                            route().current("profile.complaints")
-                                ? "py-3 px-7 border-b-2 border-cyan-200  shadow-xl bg-sky-800 text-white"
-                                : "hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
-                        }
-                        href={route("profile.complaints")}
-                    >
-                        ثبت شکایات
-                    </Link> */}
+                       
                         <Link
                             className="text-right hover:bg-cyan-200 py-3 px-7 border-b-2 border-cyan-200"
                             href={route("logout")}
@@ -178,29 +159,3 @@ export default function Authenticated({ user, header, children }) {
     );
 }
 
-{
-    /* document.querySelector(#menu).addEvenLessenr('click',function(){
-    document.querySelector(#navbar).classList.toggle('hidden')
-})
-*/
-}
-// const screenWidth = window.innerWidth;
-
-// useEffect(() => {
-//     function handleResize() {
-//         const screenWidth = window.innerWidth;
-//         if (screenWidth > 1024) {
-//             setMenuu(true);
-//         }else{
-//             setMenuu(false);
-//         }
-//     }
-
-//     // اضافه کردن رویداد برای بررسی تغییر اندازه صفحه
-//     window.addEventListener("resize", handleResize);
-
-//     // برداشتن رویداد هنگام عدم نیاز
-//     return () => {
-//         window.removeEventListener("resize", handleResize);
-//     };
-// }, [window.innerWidth]);

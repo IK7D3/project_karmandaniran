@@ -45,38 +45,7 @@ screen_size_2:max-w-[880px] screen_size_3:max-w-[940px] xl:max-w-[1020px] screen
                     </div>
                     </div>
                     </div>
-                        {/* <Link
-                        href={route("profile.edit")}
-                            type="button"
-                            class="text-white bg-gradient-to-r 
-                         from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 
-                         focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 
-                         font-medium rounded-lg px-5 py-10 text-center mr-2 mb-2"
-                        >
-                            پروفایل
-                        </Link>
-                        <Link
-                        href={route("transfer_request.index")}
-                            type="button"
-                            class="text-white bg-gradient-to-r
-                         from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 
-                         focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 
-                         font-medium rounded-lg px-5 py-10 text-center mr-2 mb-2"
-                        >
-                            درخواست انتقالی
-                        </Link> */}
-
-
-                        {/* <Link
-                        href={route("profile.complaints")}
-                            type="button"
-                            class="text-white bg-gradient-to-r
-                         from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 
-                         focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 
-                         font-medium rounded-lg px-5 py-10 text-center mr-2 mb-2"
-                        >
-                            ثبت شکایات
-                        </Link> */}
+                        
                   
             </div>
         </AuthenticatedLayout>

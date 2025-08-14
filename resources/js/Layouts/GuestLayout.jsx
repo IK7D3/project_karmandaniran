@@ -5,11 +5,7 @@ export default function Guest({ children }) {
     return (
         <div className="font-vazir text-right min-h-screen flex flex-col w-full  md:justify-center items-center py-6 sm:pt-0 
         bg-gradient-to-r bg-sky-950 ">
-          {/*   <div>
-                <Link href="/">
-                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                </Link>
-            </div> */}
+       
 
             <div className="mt-2 md:mt-0 flex flex-col-reverse  w-11/12 md:flex-row md:max-w-6xl  bg-white shadow-md overflow-hidden rounded-xl">
                 <div className="font-vazir md:basis-1/2 bg-white px-10 py-10 self-center  md:relative top-2/4 rounded-xl">
@@ -33,13 +29,6 @@ export default function Guest({ children }) {
     در این سیستم، کاربر در صورت فراموشی رمز عبور  شماره موبایل خود را وارد می‌کند و در ادامه یک کد تأیید به شماره موبایل ارسال می‌شود. سپس کاربر باید این کد را وارد کرده و تأیید هویت خود را انجام دهد.
     </li>
 </ul>
-                    {/* <span className="font-light  text-gray-800 text-lg px-10 mb-56 md:mb-0">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-                        بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
-                        هدف
-                    </span> */}
                     
                 </div>
             </div>
