@@ -247,8 +247,6 @@ const FormVerification1 = ({ data, req }) => {
                     onPageChange={handlePageClick}
                     pageClassName="hidden"
                     pageLinkClassName="hidden"
-                    // containerClassName={"pagination"}
-                    // activeClassName={"active"}
                     className=" basis-1/2  flex flex-row justify-start gap-4 font-vazir text-right
                     
                     items-center px-4 py-2border
