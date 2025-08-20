@@ -26,14 +26,10 @@ const FormVerification1 = ({ data }) => {
 
 
     
-    // const submit = (e) => {
-    //     e.preventDefault();
-    
-    //     post(route("transfer_request.store"));
-    // };
+
     
 
-    // console.log(currentItems);
+    console.log(currentItems);
     
     return (
         <div class="relative overflow-hidden shadow-md rounded-lg">

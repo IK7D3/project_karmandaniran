@@ -5,7 +5,7 @@ import FormVerification1 from "./Partials/FormVerification1";
 import FormVerification2 from "./Partials/FormVerification2";
 
 const FirstVerification = ({ auth, data }) => {
-    // console.log(data);
+    console.log(data);
     // console.log("ddatea: ", data);
 
     return (
