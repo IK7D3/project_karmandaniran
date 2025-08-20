@@ -3,7 +3,7 @@ import React from 'react'
 import { AdminDashboardLayout } from './Layouts/AdminDashboardLayout';
 
 const AdminDashboard = ({auth}) => {
-  // console.log(auth);
+  console.log(auth);
   return (
     
     <AdminDashboardLayout
